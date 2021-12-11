@@ -1,6 +1,5 @@
-from herbivore import *
 import pygame
-
+from herbivore import *
 
 class lapin(Herbivore):
     def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[100,100], enceinte=0):

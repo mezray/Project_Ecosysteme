@@ -14,10 +14,8 @@ class Plante(Vivant):
         return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        # a completer
-        return
-        """enfant=self.__class__(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,800),random.randrange(0,600)])#self.__class__ permet de récupérer la classe de 'self'
-        listeDesHerbivores.append(enfant)"""
+        enfant=self.__class__(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,800),random.randrange(0,600)])#self.__class__ permet de récupérer la classe de 'self'
+        listeDesHerbivores.append(enfant)
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
         if len(listeDesPlantes) > 7500:
