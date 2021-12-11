@@ -26,11 +26,6 @@ class loup(Carnivore):
             image = pygame.image.load("./sprite/pug/frame-4.gif")
             screen.blit(image, position)
 
-            
-        
-
-
-
 class chat(Carnivore):
     def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[550,550]):
         Carnivore.__init__(self,rayonVision,rayonContact)
@@ -56,7 +51,7 @@ class chat(Carnivore):
 
 p=0
 while p < 1:
-    enfant=loup(30000,30000,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=loup(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
     listeDesCarnivores.append(enfant)
     p+=1
 

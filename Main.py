@@ -30,15 +30,18 @@ while 1:
             pygame.quit() #stop pygame
             sys.exit() #stop the program
     screen.fill((0,0,0)) #clear the screen;
-    #print(str(len(listeDesVivants))) 
+    
     i=0
     toKill = []
+    
+    """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1
     if frames>3:
         frames=0
     while i<len(listeDesVivants): #update all animals
         newPosition=listeDesVivants[i].deplacer(random.randrange(0,8))
         listeDesVivants[i].draw(newPosition, frames)
+        
         if listeDesVivants[i].energie>=1:
             listeDesVivants[i].energie -=1
             print(listeDesVivants[i].energie)

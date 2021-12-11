@@ -23,7 +23,7 @@ class Plante(Vivant):
         else:
             oui = 0
         print(cible.__class__.__bases__[0])
-        if str(cible.__class__.__bases__[0])=="<class 'objet.dechetOrganique'>" and oui == 0:
+        if str(cible.__class__.__bases__[0])=="<class 'objet.dechet'>" and oui == 0:
             return self.manger(cible)
     
     def inRayonVision(self,cible):
