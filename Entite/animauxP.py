@@ -24,7 +24,7 @@ class rose(Plante):
         if i == 3:
             image = pygame.image.load("./sprite/pug/frame-4.gif")
             screen.blit(image, position)
-p=0
+p=1
 while p < 1:
     enfant=rose(100,100,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
     listeDesPlantes.append(enfant)

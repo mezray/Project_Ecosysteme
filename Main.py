@@ -20,7 +20,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Environnement")
 
 #vitesse du jeu en fps
-FPS = 2
+FPS = 20
 
 
 frames=0
@@ -36,7 +36,7 @@ while 1:
     
     """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1
-    if frames>7:
+    if frames>6:
         frames=0
     while i<len(listeDesVivants): #update all animals
         newPosition=listeDesVivants[i].deplacer(random.randrange(0,8))
@@ -44,7 +44,7 @@ while 1:
         
         if listeDesVivants[i].energie>=1:
             listeDesVivants[i].energie -=1
-            print(listeDesVivants[i].energie)
+            #print(listeDesVivants[i].energie)
         else:
             """Pourra être changer en fonction de points de vies des différents animaux"""
             if listeDesVivants[i].vie>=20:

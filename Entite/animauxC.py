@@ -13,30 +13,20 @@ class loup(Carnivore):
     
     #sprite du bled
     def draw(self, position, i):
-        if i == 0:
+        print(i)
+        if i == 0 or i == 4:
             image = pygame.image.load("./sprite/pug/frame-1.gif")
             screen.blit(image, position)
-        if i == 1:
+        if i == 1 or i == 5:
             image = pygame.image.load("./sprite/pug/frame-2.gif")
             screen.blit(image, position)
-        if i == 2:
+        if i == 2 or i == 6:
             image = pygame.image.load("./sprite/pug/frame-3.gif")
             screen.blit(image, position)
-        if i == 3:
+        if i == 3 or i == 7:
             image = pygame.image.load("./sprite/pug/frame-4.gif")
             screen.blit(image, position)
-        if i == 4:
-            image = pygame.image.load("./sprite/pug/frame-1 - Copie.gif")
-            screen.blit(image, position)
-        if i == 5:
-            image = pygame.image.load("./sprite/pug/frame-2 - Copie.gif")
-            screen.blit(image, position)
-        if i == 6:
-            image = pygame.image.load("./sprite/pug/frame-3 - Copie.gif")
-            screen.blit(image, position)
-        if i == 7:
-            image = pygame.image.load("./sprite/pug/frame-4 - Copie.gif")
-            screen.blit(image, position)
+
 
 class chat(Carnivore):
     def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[550,550]):
@@ -48,6 +38,7 @@ class chat(Carnivore):
         self.attaque = self.energie
         
     def draw(self, position, i):
+        print(i)
         if i == 0:
             image = pygame.image.load("./sprite/cat/frame-1.gif")
             screen.blit(image, position)
@@ -75,10 +66,11 @@ class chat(Carnivore):
 
 p=0
 while p < 1:
-    enfant=loup(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
-    enfant=chat(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant1=loup(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant2=chat(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
     
-    listeDesCarnivores.append(enfant)
+    listeDesCarnivores.append(enfant1)
+    listeDesCarnivores.append(enfant2)
     p+=1
 
 

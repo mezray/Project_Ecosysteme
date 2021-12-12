@@ -31,7 +31,7 @@ class Carnivore(Vivant):
             oui = random.randrange(0,2)
         else:
             oui = 0
-        print(cible.__class__.__bases__[0])
+        #print(cible.__class__.__bases__[0])
         if cible.name==self.name and oui == 3:#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
             if self.sexe != cible.sexe:
                 return self.reproduire()
