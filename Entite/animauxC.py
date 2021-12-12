@@ -25,6 +25,18 @@ class loup(Carnivore):
         if i == 3:
             image = pygame.image.load("./sprite/pug/frame-4.gif")
             screen.blit(image, position)
+        if i == 4:
+            image = pygame.image.load("./sprite/pug/frame-1 - Copie.gif")
+            screen.blit(image, position)
+        if i == 5:
+            image = pygame.image.load("./sprite/pug/frame-2 - Copie.gif")
+            screen.blit(image, position)
+        if i == 6:
+            image = pygame.image.load("./sprite/pug/frame-3 - Copie.gif")
+            screen.blit(image, position)
+        if i == 7:
+            image = pygame.image.load("./sprite/pug/frame-4 - Copie.gif")
+            screen.blit(image, position)
 
 class chat(Carnivore):
     def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[550,550]):
@@ -37,21 +49,35 @@ class chat(Carnivore):
         
     def draw(self, position, i):
         if i == 0:
-            image = pygame.image.load("./sprite/pug/frame-1.gif")
+            image = pygame.image.load("./sprite/cat/frame-1.gif")
             screen.blit(image, position)
         if i == 1:
-            image = pygame.image.load("./sprite/pug/frame-2.gif")
+            image = pygame.image.load("./sprite/cat/frame-2.gif")
             screen.blit(image, position)
         if i == 2:
-            image = pygame.image.load("./sprite/pug/frame-3.gif")
+            image = pygame.image.load("./sprite/cat/frame-3.gif")
             screen.blit(image, position)
         if i == 3:
-            image = pygame.image.load("./sprite/pug/frame-4.gif")
+            image = pygame.image.load("./sprite/cat/frame-4.gif")
+            screen.blit(image, position)
+        if i == 4:
+            image = pygame.image.load("./sprite/cat/frame-5.gif")
+            screen.blit(image, position)
+        if i == 5:
+            image = pygame.image.load("./sprite/cat/frame-6.gif")
+            screen.blit(image, position)
+        if i == 6:
+            image = pygame.image.load("./sprite/cat/frame-7.gif")
+            screen.blit(image, position)
+        if i == 7:
+            image = pygame.image.load("./sprite/cat/frame-8.gif")
             screen.blit(image, position)
 
 p=0
 while p < 1:
     enfant=loup(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=chat(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+    
     listeDesCarnivores.append(enfant)
     p+=1
 
