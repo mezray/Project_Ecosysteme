@@ -38,7 +38,6 @@ class chat(Carnivore):
         self.attaque = self.energie
         
     def draw(self, position, i):
-        print(i)
         if i == 0:
             image = pygame.image.load("./sprite/cat/frame-1.gif")
             screen.blit(image, position)
