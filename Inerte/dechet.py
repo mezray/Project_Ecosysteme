@@ -5,7 +5,7 @@ class caca(Objet):
     def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[100,100]):
         Objet.__init__(self,energie,vie,sexe)
         self.vitesse=0 #vitesse en fonction de l'énergie
-        self.name = "plante"
+        self.name = "dechet"
         self.position=position
         self.attaque = self.energie
     

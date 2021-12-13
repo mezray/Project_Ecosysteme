@@ -22,7 +22,7 @@ class Plante(Vivant):
             oui = random.randrange(0,2)
         else:
             oui = 0
-        print(cible.__class__.__bases__[0])
+        #print(cible.__class__.__bases__[0])
         if str(cible.__class__.__bases__[0])=="<class 'objet.dechet'>" and oui == 0:
             return self.manger(cible)
     

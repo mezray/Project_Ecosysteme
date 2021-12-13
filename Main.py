@@ -33,6 +33,7 @@ while 1:
     
     i=0
     toKill = []
+    toAdd = []
     
     """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1
@@ -56,12 +57,15 @@ while 1:
                 
         if listeDesVivants[i].vie <=0 and listeDesVivants[i].energie<=0:
             toKill.append(i)
+            """toAdd.append(i.position)"""
         i+=1
 
     for dead in reversed(toKill):
         """Ajouter ici un moyen d'ajouter un objet viande à la position du mort"""
         #listeDesVivants.append()
         listeDesVivants.remove(listeDesVivants[dead])
+    for i in toAdd:    
+        listeDesObjets.append(i)
  
         
         

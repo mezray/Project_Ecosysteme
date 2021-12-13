@@ -58,6 +58,9 @@ class Carnivore(Vivant):
     def deplacer(self,directionNumber):#fonction permet de se déplacer suivant une direction: ("S","SW","W","NW","N","NE","E","SE")
         newX=self.position[0]+directions[directionNumber][0]*self.vitesse
         newY=self.position[1]+directions[directionNumber][1]*self.vitesse
+        """if newX and newY == listeDesVivants.position 
+            redo"""
+        """a changer car ils peuvent sortir de la map"""
         if newX<0 or newX>800 or newY<0 or newY>600 :
             return self.deplacer(random.randrange(0,8))
         else:
