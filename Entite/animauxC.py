@@ -13,7 +13,6 @@ class loup(Carnivore):
     
     #sprite du bled
     def draw(self, position, i):
-        print(i)
         if i == 0 or i == 4:
             image = pygame.image.load("./sprite/pug/frame-1.gif")
             screen.blit(image, position)
