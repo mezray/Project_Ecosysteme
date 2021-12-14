@@ -1,15 +1,13 @@
 from vivant import *
 import random
 directions = [(-1,0),(0,1),(1,0),(0,-1),(1,1),(-1,1),(1,-1),(-1,-1)]
-
+listeDesCarnivores=[]
 
 class Carnivore(Vivant):
     def __init__(self,rayonVision,rayonContact):
         self.rayonVision=rayonVision
         self.rayonContact=rayonContact
-        
 
-    
     def manger(self,proie):#le prédateur récupère tout l'énergie de la proie, la proie perd sa vie et il est retirer de la listeDesCarnivores
         if self.energie > 0:
             if self.attaque >= proie.energie and proie.energie > 0: #Si attaque >> energie de la proie ET energie de la proie > 0
@@ -27,7 +25,7 @@ class Carnivore(Vivant):
         listeDesCarnivores.append(enfant)
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
-        if len(listeDesCarnivores) > 7500:
+        if len(listeDesCarnivores) < 7500:
             oui = random.randrange(0,2)
         else:
             oui = 0
@@ -47,7 +45,10 @@ class Carnivore(Vivant):
         direct=directions[0]
         for direction in directions:
             proche=(self.position[0]+direction[0]-cible.position[0])**2+(self.position[1]+direction[1]-cible.position[1])**2 
-            if proche <= distance:
+            if self.attaque >cible.attaque and proche <= distance:
+                direct=direction
+                distance=proche
+            if self.attaque <cible.attaque and proche >= distance:
                 direct=direction
                 distance=proche
         self.position[0]+=direct[0]*self.vitesse
