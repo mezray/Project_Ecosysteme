@@ -13,15 +13,9 @@ class lapin(Herbivore):
     
     #sprite du bled
     def draw(self, position, i):
-        if i == 0 or i == 3 or i == 6:
-            image = pygame.image.load("./sprite/Lapin/frame-1.gif")
-            screen.blit(image, position)
-        if i == 1 or i == 4 or i == 7:
-            image = pygame.image.load("./sprite/Lapin/frame-2.gif")
-            screen.blit(image, position)
-        if i == 2 or i == 5:
-            image = pygame.image.load("./sprite/Lapin/frame-3.gif")
-            screen.blit(image, position)
+        gifNumber='./sprite/Lapin/frame-'+str(i%3+1)+'.gif'
+        image = pygame.image.load(gifNumber)
+        screen.blit(image, position)
 
 
 p=0
