@@ -2,12 +2,12 @@ import pygame
 from herbivore import *
 
 class lapin(Herbivore):
-    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[100,100], enceinte=0):
+    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position):
         Herbivore.__init__(self,rayonVision,rayonContact)
         Vivant.__init__(self,energie,vie,sexe)
         self.name= "lapin"
-        self.enceinte = enceinte
-        self.vitesse=7 #vitesse en fonction de l'énergie
+        self.enceinte = 0
+        self.vitesse=5 #vitesse en fonction de l'énergie
         self.position=position
         self.attaque = self.energie
     
@@ -19,7 +19,7 @@ class lapin(Herbivore):
 
 
 p=0
-while p < 1:
-    enfant=lapin(600,0,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
-    listeDesCarnivores.append(enfant)
+while p < 10:
+    enfant=lapin(30,650,random.choice(['male',"femelle"]),350,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    listeDesHerbivores.append(enfant)
     p+=1

@@ -1,7 +1,7 @@
 from vivant import *
 import random
 directions = [(-1,0),(0,1),(1,0),(0,-1),(1,1),(-1,1),(1,-1),(-1,-1)]
-listeDesCarnivores=[]
+
 
 class Carnivore(Vivant):
     def __init__(self,rayonVision,rayonContact):
@@ -44,13 +44,16 @@ class Carnivore(Vivant):
         distance= (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
         direct=directions[0]
         for direction in directions:
-            proche=(self.position[0]+direction[0]-cible.position[0])**2+(self.position[1]+direction[1]-cible.position[1])**2 
-            if self.attaque >cible.attaque and proche <= distance:
-                direct=direction
-                distance=proche
-            if self.attaque <cible.attaque and proche >= distance:
-                direct=direction
-                distance=proche
+            newX=self.position[0]+direction[0]*self.vitesse
+            newY=self.position[1]+direction[1]*self.vitesse
+            if 10<newX<750 and 10<newY<550:
+                proche=(newX-cible.position[0])**2+(newY-cible.position[1])**2 
+                if self.attaque >=cible.attaque and proche <= distance:
+                    direct=direction
+                    distance=proche
+                if self.attaque <=cible.attaque and proche >= distance:
+                    direct=direction
+                    distance=proche
         self.position[0]+=direct[0]*self.vitesse
         self.position[1]+=direct[1]*self.vitesse
         return (self.position[0],self.position[1])
@@ -62,17 +65,19 @@ class Carnivore(Vivant):
         """if newX and newY == listeDesVivants.position 
             redo"""
         """a changer car ils peuvent sortir de la map"""
-        if newX<0 or newX>800 or newY<0 or newY>600 :
+        if newX<10 or newX>750 or newY<10 or newY>550 :
             return self.deplacer(random.randrange(0,8))
         else:
             self.position[0]=newX
             self.position[1]=newY
+
+        liste=listeDesHerbivores+listeDesCarnivores
         i=0
-        while i<len(listeDesCarnivores):
-            if self.inZone(self.rayonContact,listeDesCarnivores[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
-                self.inRayonContact(listeDesCarnivores[i])
-            if self.inZone(self.rayonVision,listeDesCarnivores[i].position)==True:#regarde s'il y a qqch dans le rayon de vision
-                return self.inRayonVision(listeDesCarnivores[i])
+        while i<len(liste):
+            if self.inZone(self.rayonContact,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
+                self.inRayonContact(liste[i])
+            if self.inZone(self.rayonVision,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de vision
+                return self.inRayonVision(liste[i])
             i+=1
         
         return self.position

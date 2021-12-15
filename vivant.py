@@ -1,12 +1,15 @@
-listeDesCarnivores=[]
-listeDesHerbivores=[]
-listeDesPlantes=[]
-
 import pygame
 SCREENWIDTH=800
 SCREENHEIGHT=600
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
+
+listeDesCarnivores=[]
+listeDesHerbivores=[]
+listeDesPlantes=[]
+
+
+
 class Vivant:
     def __init__(self,energie,vie,sexe):
         self.energie=energie

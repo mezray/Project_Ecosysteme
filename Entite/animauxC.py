@@ -2,11 +2,11 @@ import pygame
 from carnivore import *
 
 class loup(Carnivore):
-    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[100,100], enceinte=0):
+    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position):
         Carnivore.__init__(self,rayonVision,rayonContact)
         Vivant.__init__(self,energie,vie,sexe)
         self.name= "loup"
-        self.enceinte = enceinte
+        self.enceinte = 0
         self.vitesse=7 #vitesse en fonction de l'énergie
         self.position=position
         self.attaque = self.energie
@@ -19,11 +19,11 @@ class loup(Carnivore):
 
 
 class chat(Carnivore):
-    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[550,550]):
+    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position):
         Carnivore.__init__(self,rayonVision,rayonContact)
         Vivant.__init__(self,energie,vie,sexe)
         self.name= "chat"
-        self.vitesse=7
+        self.vitesse=3
         self.position=position
         self.attaque = self.energie
         
@@ -33,9 +33,9 @@ class chat(Carnivore):
         screen.blit(image, position)
 
 p=0
-while p < 1:
-    enfant1=loup(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
-    enfant2=chat(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(0,400),random.randrange(0,300)])#self.__class__ permet de récupérer la classe de 'self'
+while p < 2:
+    enfant1=loup(300,300,random.choice(['male',"femelle"]),250,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant2=chat(300,300,random.choice(['male',"femelle"]),150,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
     
     listeDesCarnivores.append(enfant1)
     listeDesCarnivores.append(enfant2)
