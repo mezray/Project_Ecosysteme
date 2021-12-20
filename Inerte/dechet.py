@@ -2,24 +2,14 @@ import pygame
 from objet import *
 
 class caca(Objet):
-    def __init__(self,energie,vie,sexe,rayonVision,rayonContact,position=[100,100]):
-        Objet.__init__(self,energie,vie,sexe)
+    def __init__(self,vie, position):
+        Objet.__init__(self, vie, position)
         self.vitesse=0 #vitesse en fonction de l'énergie
         self.name = "dechet"
         self.position=position
-        self.attaque = self.energie
     
     #sprite du bled
     def draw(self, position, i):
-        if i == 0:
-            image = pygame.image.load("./sprite/pug/frame-1.gif")
-            screen.blit(image, position)
-        if i == 1:
-            image = pygame.image.load("./sprite/pug/frame-2.gif")
-            screen.blit(image, position)
-        if i == 2:
-            image = pygame.image.load("./sprite/pug/frame-3.gif")
-            screen.blit(image, position)
-        if i == 3:
-            image = pygame.image.load("./sprite/pug/frame-4.gif")
-            screen.blit(image, position)
+        gifNumber='./sprite/Cacs/frame-'+str(i%5+1)+'.gif'
+        image = pygame.image.load(gifNumber)
+        screen.blit(image, position)

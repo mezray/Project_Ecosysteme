@@ -20,7 +20,7 @@ class Plante(Vivant):
         enfant=self.__class__(300,300,100,100,position=[x,y])
         listeDesPlantes.append(enfant)
 
-    def inZoneRacine(self,elem):#il faut apeller cette méthode mais sais pas quand
+    def inZoneRacine(self,elem):#il faut apeller cette méthode mais sais pas quand ah x)
         if self.inZone(self.rayonRacine,elem.position)==True:
             if type(elem).__name__=='Dechet':
                 return self.manger(elem)

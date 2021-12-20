@@ -1,4 +1,5 @@
 from vivant import *
+from objet import *
 import random
 directions = [(-1,0),(0,1),(1,0),(0,-1),(1,1),(-1,1),(1,-1),(-1,-1)]
 
@@ -36,8 +37,8 @@ class Carnivore(Vivant):
         if str(cible.__class__.__bases__[0])=="<class 'carnivore.Carnivore'>" and oui == 0:#si un carnivore croise un herbivore, herbivore sera manger
             return self.manger(cible)
         if str(cible.__class__.__bases__[0])=="<class 'herbivore.Herbivore'>" and oui == 0:#si un carnivore croise un herbivore, herbivore sera manger
-            return self.manger(cible)
-        if str(cible.__class__.__bases__[0])=="<class 'objet.viande'>" and oui == 0:
+            return self.manger(cible) 
+        if str(cible.__class__.__bases__[0])=="<class 'objet.beef'>" and oui == 0:
             return self.manger(cible)
     
     def inRayonVision(self,cible):

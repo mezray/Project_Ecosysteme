@@ -20,6 +20,6 @@ class lapin(Herbivore):
 
 p=0
 while p < 10:
-    enfant=lapin(30,650,random.choice(['male',"femelle"]),350,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=lapin(3,3,random.choice(['male',"femelle"]),350,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
     listeDesHerbivores.append(enfant)
     p+=1
