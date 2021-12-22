@@ -1,7 +1,7 @@
 import pygame
 from objet import *
 
-class caca(Objet):
+class dechet(Objet):
     def __init__(self,vie, position):
         Objet.__init__(self, vie, position)
         self.vitesse=0 #vitesse en fonction de l'énergie
