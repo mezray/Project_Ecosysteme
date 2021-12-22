@@ -23,6 +23,20 @@ FPS = 50
 #Frame Gif
 frames=0
 
+def energieUpdate(etreVivant,index):
+    if etreVivant.energie>=1:
+        etreVivant.energie -=1
+    else:
+        if etreVivant.vie>=20:
+            etreVivant.energie+=20
+            etreVivant.vie-=20
+        else:
+            etreVivant.vie=0
+            
+    if etreVivant.vie<=0:
+        toKill.append(index)
+        toAdd.append([index, etreVivant.position])
+
 #Initialisation
 while 1:
     for event in pygame.event.get():
@@ -30,8 +44,6 @@ while 1:
             pygame.quit() #stop pygame
             sys.exit() #stop the program
     screen.fill((0,0,0)) #clear the screen;
-    
-    
     
     """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1
@@ -45,25 +57,14 @@ while 1:
     while plante<len(listeDesPlantes):
         listeDesPlantes[plante].draw(listeDesPlantes[plante].position, frames)
         """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
-        if listeDesPlantes[plante].energie>=1:
-            listeDesPlantes[plante].energie -=1
-        else:
-            if listeDesPlantes[plante].vie>=20:
-                listeDesPlantes[plante].energie+=20
-                listeDesPlantes[plante].vie-=20
-            else:
-                listeDesPlantes[plante].vie=0
-            
-        if listeDesPlantes[plante].vie<=0:
-            toKill.append(plante)
-            toAdd.append([plante, listeDesPlantes[plante].position])
+        energieUpdate(listeDesPlantes[plante],plante)
         plante+=1
 
     for dead in reversed(toKill):
         listeDesPlantes.remove(listeDesPlantes[dead])
         
     for i, position in toAdd:
-        listeDesDechets.append(caca(100, position))
+        listeDesDechets.append(dechet(100, position))
         listeDesObjets+=listeDesDechets
 
       
@@ -75,23 +76,7 @@ while 1:
         #print(listeDesAnimaux[i])
         newPosition=listeDesAnimaux[i].deplacer(random.randrange(0,8))
         listeDesAnimaux[i].draw(newPosition, frames)
-        
-        if listeDesAnimaux[i].energie>=1:
-            listeDesAnimaux[i].energie -=1
-
-        else:
-            """Pourra être changer en fonction de points de vies des différents animaux"""
-            if listeDesAnimaux[i].vie>=20:
-                listeDesAnimaux[i].energie+=20
-                listeDesAnimaux[i].vie-=20
-            else:
-                listeDesAnimaux[i].vie=0
-
-                
-        if listeDesAnimaux[i].vie <=0:
-            toKill.append(i)
-            toAdd.append([i, listeDesAnimaux[i].position])
-
+        energieUpdate(listeDesAnimaux[i],i)
         i+=1
 
     for dead in reversed(toKill):
@@ -119,7 +104,7 @@ while 1:
             
         if listeDesObjets[objet].vie <=0:
             toKill.append(objet)
-            if (isinstance(listeDesObjets[objet], caca)) == False:
+            if (isinstance(listeDesObjets[objet], dechet)) == False:
                 toAdd.append([objet, listeDesObjets[objet].position])
         objet+=1
         
@@ -133,13 +118,10 @@ while 1:
 
 
     for i, position in toAdd:
-        listeDesDechets.append(caca(1000, position))
+        listeDesDechets.append(dechet(1000, position))
         listeDesObjets+=listeDesDechets
     #**  
     listeDesObjets = []
     listeDesObjets=listeDesViandes+listeDesDechets
     pygame.display.update() #update display
     pygame.time.Clock().tick(FPS) #limit FPS
-
-
-
