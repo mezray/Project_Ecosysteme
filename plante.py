@@ -1,7 +1,9 @@
 from objet import *
 from vivant import *
 import random
-listeDesPlantes = []
+
+
+
 
 class Plante(Vivant):
     def __init__(self,rayonRacine,rayonSemis):
@@ -17,11 +19,11 @@ class Plante(Vivant):
        
                 
     def reproduire(self,x,y):
-        if len(listeDesPlantes)<20:
+        if len(listeDesPlantes)<6:
+            print("videeeeeeeeeeeeeeeeeee", listeDesGraines)
             enfant=self.__class__(300,300,100,100,position=[x,y])
-            listeDesPlantes.append(enfant)
-            print(listeDesPlantes)
-            return
+            listeDesGraines.append(enfant)
+            print("liste initial :", listeDesGraines)
 
     def inZoneRacine(self,elem):
         i=0

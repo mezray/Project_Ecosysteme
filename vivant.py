@@ -3,8 +3,8 @@ from UI import *
 
 listeDesCarnivores=[]
 listeDesHerbivores=[]
-listeDesPlantes=[]
-
+listeDesGraines = []
+listeDesPlantes = []
 
 
 class Vivant:
