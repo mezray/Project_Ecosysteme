@@ -14,8 +14,8 @@ class rose(Plante):
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
 
-p=0
+p=9
 while p < 10:
-    enfant=rose(100,100,750,100,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=rose(100,100,750,100,position=[400,300])#self.__class__ permet de récupérer la classe de 'self'
     listeDesPlantes.append(enfant)
     p+=1 

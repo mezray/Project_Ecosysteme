@@ -30,15 +30,15 @@ class Carnivore(Vivant):
             oui = random.randrange(0,2)
         else:
             oui = 0
-        #print(cible.__class__.__bases__[0])
-        if cible.name==self.name and oui == 3:#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
+        if cible.name==self.name and oui == 1:#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
             if self.sexe != cible.sexe:
                 return self.reproduire()
-        if str(cible.__class__.__bases__[0])=="<class 'carnivore.Carnivore'>" and oui == 0:#si un carnivore croise un herbivore, herbivore sera manger
+        print(cible.__class__.__bases__[0])
+        if str(cible.__class__.__bases__[0])=="<class 'carnivore.Carnivore'>" and oui == 0:#si un carnivore croise un carnivore, carnivore sera manger
             return self.manger(cible)
         if str(cible.__class__.__bases__[0])=="<class 'herbivore.Herbivore'>" and oui == 0:#si un carnivore croise un herbivore, herbivore sera manger
             return self.manger(cible) 
-        if str(cible.__class__.__bases__[0])=="<class 'objet.beef'>" and oui == 0:
+        if str(cible.__class__.__bases__[0])=="<class 'objet.Objet'>" and oui == 0: #si un carnivore croise un objet viande, viande sera manger
             return self.manger(cible)
     
     def inRayonVision(self,cible):

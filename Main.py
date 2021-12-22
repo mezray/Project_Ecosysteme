@@ -18,7 +18,7 @@ listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 50
+FPS = 20
 
 #Frame Gif
 frames=0
@@ -58,13 +58,15 @@ while 1:
         listeDesPlantes[plante].draw(listeDesPlantes[plante].position, frames)
         """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
         energieUpdate(listeDesPlantes[plante],plante)
+        listeDesPlantes[plante].inZoneRacine(listeDesDechets)
+        #listeDesPlantes[plante].inZoneSemis() #boucle infini :/
         plante+=1
 
     for dead in reversed(toKill):
         listeDesPlantes.remove(listeDesPlantes[dead])
         
     for i, position in toAdd:#sert à quoi 'i'?
-        listeDesDechets.append(dechet(100, position))
+        listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
 
       
@@ -86,7 +88,7 @@ while 1:
         listeDesAnimaux.remove(listeDesAnimaux[dead])
 
     for i, position in toAdd:
-        viande=beef(100, position)
+        viande=beef(300, position)
         listeDesViandes.append(viande)
         listeDesObjets.append(viande)
 
@@ -112,12 +114,12 @@ while 1:
         except:
             listeDesDechets.remove(listeDesObjets[dead])
         listeDesObjets.remove(listeDesObjets[dead])
-        #**
+        
 
     for i, position in toAdd:
-        listeDesDechets.append(dechet(100, position))
+        listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
-    #**  
+     
     listeDesObjets = []
     listeDesObjets=listeDesViandes+listeDesDechets
     pygame.display.update() #update display
