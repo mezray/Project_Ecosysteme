@@ -15,17 +15,18 @@ class Carnivore(Vivant):
                 self.energie += proie.energie
                 proie.energie = 0 #on retire les dégats à l'energie de la cible --> a revoir pour cas attaque fait que pt energie << 0
                 #print("statu attaquant",self.name, self.energie, "et proie", proie.name, proie.energie)
+                self.caca +=1
                 return
             if self.attaque < proie.energie:
                 proie.energie -= self.attaque
                 self.energie += self.attaque
+                self.caca +=1
                 return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        if len(listeDesCarnivores)<200 and self.force >= 1:
-            enfant=self.__class__(300,300,random.choice(['male',"femelle"]),750,100,self.position)#self.__class__ permet de récupérer la classe de 'self'
-            listeDesBebeCarnivores.append(enfant)
-            self.force = 0
+        if len(listeDesCarnivores)<200 and len(listeDesBebeCarnivores)<75 and self.force >= 1 and self.sexe == "femelle":
+            listeDesBebeCarnivores.append(self)
+            self.force -= 1
 
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
@@ -36,7 +37,7 @@ class Carnivore(Vivant):
     
     def inRayonVision(self,cible):
         distance= (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
-        direct=directions[0]
+        direct=(0,0)
         for direction in directions:
             newX=self.position[0]+direction[0]*self.vitesse
             newY=self.position[1]+direction[1]*self.vitesse
@@ -59,14 +60,15 @@ class Carnivore(Vivant):
         if newX<10 or newX>(SCREENWIDTH-50) or newY<10 or newY>(SCREENHEIGHT-50) :
             return self.deplacer(random.randrange(0,8))
         else:
-            smallOffset = random.random()
-            self.position[0]=newX + smallOffset
-            self.position[1]=newY + smallOffset
+            self.position[0]=newX 
+            self.position[1]=newY 
             
             
         liste=listeDesHerbivores+listeDesViandes+listeDesCarnivores
-        random.shuffle(liste)
+        #random.shuffle(liste)
         i=0
+        if self.caca >=20:
+            return 
         while i<len(liste):
             if self.inZone(self.rayonContact,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
                 self.inRayonContact(liste[i])

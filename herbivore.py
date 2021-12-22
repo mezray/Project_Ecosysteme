@@ -15,9 +15,8 @@ class Herbivore(Vivant):
             return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        if len(listeDesHerbivores)<1000 and self.force >= 0:
-            enfant=self.__class__(150,300,random.choice(['male',"femelle"]),100,100,self.position)#self.__class__ permet de récupérer la classe de 'self'
-            listeDesBebeHerbivores.append(enfant)
+        if len(listeDesHerbivores)<1000 and len(listeDesBebeHerbivores)<100 and self.force >= 1 and self.sexe == "femelle":
+            listeDesBebeHerbivores.append(self)
             self.force -= 1
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
@@ -52,9 +51,8 @@ class Herbivore(Vivant):
         if newX<10 or newX>(SCREENWIDTH-50) or newY<10 or newY>(SCREENHEIGHT-50) :
             return self.deplacer(random.randrange(0,8))
         else:
-            smallOffset = random.random()
-            self.position[0]=newX + smallOffset
-            self.position[1]=newY + smallOffset
+            self.position[0]=newX 
+            self.position[1]=newY 
             #print(newX, newY)
         
         liste=listeDesPlantes+listeDesCarnivores+listeDesHerbivores

@@ -21,10 +21,12 @@ listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 20
+FPS = 0
 
 #Frame Gif
 frames=0
+f=0
+j=0
 
 def energieUpdate(etreVivant,index):
     if etreVivant.energie>=1:
@@ -128,21 +130,49 @@ while 1:
     for i, position in toAdd:
         listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
-        
-    f=0
-    if f==3:
-        listeDesCarnivores.append(listeDesBebeCarnivores, listeDesBebeCarnivores.position)
-        f=0 
-    f+=1
     
-    listeDesCarnivores += listeDesBebeCarnivores
-    listeDesHerbivores += listeDesBebeHerbivores
+    if f==3:
+        i=0
+        while i<len(listeDesBebeHerbivores):
+            if listeDesBebeHerbivores[i].enceinte == 0:
+                try:
+                    position=[0,0]
+                    position[0] = listeDesBebeHerbivores[i].position[0]
+                    position[1] = listeDesBebeHerbivores[i].position[1]
+                    listeDesHerbivores.append(listeDesBebeHerbivores[i].__class__(100,300,random.choice(['male',"femelle"]),400,150,position))
+                    listeDesBebeHerbivores.remove(listeDesBebeHerbivores[i])
+                except:
+                    listeDesBebeHerbivores.remove(listeDesBebeHerbivores[i])
+            else:
+                listeDesBebeHerbivores[i].enceinte -= 1
+            i+=1
+    else:
+        f+=1
+
+    if j==3:
+        i=0
+        while i<len(listeDesBebeCarnivores):
+            if listeDesBebeCarnivores[i].enceinte == 0:
+                try:
+                    position=[0,0]
+                    position[0] = listeDesBebeCarnivores[i].position[0]
+                    position[1] = listeDesBebeCarnivores[i].position[1]
+                    listeDesCarnivores.append(listeDesBebeCarnivores[i].__class__(150,500,random.choice(['male',"femelle"]),300,150,position))
+                    listeDesBebeCarnivores.remove(listeDesBebeCarnivores[i])
+                except:
+                    listeDesBebeCarnivores.remove(listeDesBebeCarnivores[i])
+            else:
+                listeDesBebeCarnivores[i].enceinte -= 1
+            i+=1
+    else:
+        j+=1
+    
+
     listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
     listeDesPlantes += listeDesGraines
     
     listeDesGraines.clear()
-    listeDesBebeCarnivores.clear()
-    listeDesBebeHerbivores.clear()
+
 
        
     #print(listeDesGraines)

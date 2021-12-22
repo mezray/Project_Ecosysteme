@@ -6,8 +6,8 @@ class lapin(Herbivore):
         Herbivore.__init__(self,rayonVision,rayonContact)
         Vivant.__init__(self,energie,vie,sexe)
         self.name= "lapin"
-        self.enceinte = 0
-        self.force = 3
+        self.enceinte = 20
+        self.force = 1
         self.vitesse = 7 #vitesse en fonction de l'énergie
         self.position = position
         self.attaque = self.energie
@@ -19,9 +19,10 @@ class lapin(Herbivore):
         screen.blit(image, position)
 
 
-p=855
-while p < 100:
-    enfant=lapin(100,300,'male',250,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
-    enfant=lapin(100,300,"femelle",250,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
-    listeDesHerbivores.append(enfant)
+p=0
+while p < 50:
+    enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)
+    enfant2=lapin(100,300,"femelle",400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
+    listeDesHerbivores.append(enfant1)
+    listeDesHerbivores.append(enfant2)
     p+=1
