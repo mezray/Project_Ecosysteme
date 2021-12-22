@@ -7,6 +7,7 @@ class beef(Objet):
         self.vitesse=0 #vitesse en fonction de l'énergie
         self.name = "viande"
         self.position=position
+        self.attaque=0
     
     #sprite du bled
     def draw(self, position, i):

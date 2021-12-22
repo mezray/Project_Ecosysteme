@@ -72,7 +72,7 @@ class Carnivore(Vivant):
             self.position[0]=newX
             self.position[1]=newY
 
-        liste=listeDesHerbivores+listeDesCarnivores
+        liste=listeDesHerbivores+listeDesViandes+listeDesCarnivores
         i=0
         while i<len(liste):
             if self.inZone(self.rayonContact,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
