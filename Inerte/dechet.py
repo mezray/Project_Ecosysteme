@@ -2,11 +2,11 @@ import pygame
 from objet import *
 
 class dechet(Objet):
-    def __init__(self,vie, position):
-        Objet.__init__(self, vie, position)
-        self.vitesse=0 #vitesse en fonction de l'énergie
+    def __init__(self,energie,position):
+        Objet.__init__(self, energie, position)
         self.name = "dechet"
         self.position=position
+        
     
     #sprite du bled
     def draw(self, position, i):

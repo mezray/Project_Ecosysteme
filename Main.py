@@ -63,9 +63,9 @@ while 1:
     for dead in reversed(toKill):
         listeDesPlantes.remove(listeDesPlantes[dead])
         
-    for i, position in toAdd:
+    for i, position in toAdd:#sert à quoi 'i'?
         listeDesDechets.append(dechet(100, position))
-        listeDesObjets+=listeDesDechets
+        listeDesObjets=listeDesDechets+listeDesViandes
 
       
     #2eme animaux
@@ -73,7 +73,6 @@ while 1:
     toAdd = []
     i=0
     while i<len(listeDesAnimaux): #update all animals
-        #print(listeDesAnimaux[i])
         newPosition=listeDesAnimaux[i].deplacer(random.randrange(0,8))
         listeDesAnimaux[i].draw(newPosition, frames)
         energieUpdate(listeDesAnimaux[i],i)
@@ -87,8 +86,9 @@ while 1:
         listeDesAnimaux.remove(listeDesAnimaux[dead])
 
     for i, position in toAdd:
-        listeDesViandes.append(beef(100, position))
-        listeDesObjets+=listeDesViandes
+        viande=beef(100, position)
+        listeDesViandes.append(viande)
+        listeDesObjets.append(viande)
 
     
     #3eme objets
@@ -97,12 +97,10 @@ while 1:
     objet = 0
     while objet<len(listeDesObjets): #update all objects
         listeDesObjets[objet].draw(listeDesObjets[objet].position, frames)
-        #print(listeDesObjets[i])
-        if listeDesObjets[objet].vie>=1:
-            listeDesObjets[objet].vie -=1  
-            #print(listeDesObjets[objet].vie)
+        if listeDesObjets[objet].energie>=1:
+            listeDesObjets[objet].energie -=1  
             
-        if listeDesObjets[objet].vie <=0:
+        else:
             toKill.append(objet)
             if (isinstance(listeDesObjets[objet], dechet)) == False:
                 toAdd.append([objet, listeDesObjets[objet].position])
@@ -113,13 +111,12 @@ while 1:
             listeDesViandes.remove(listeDesObjets[dead])
         except:
             listeDesDechets.remove(listeDesObjets[dead])
+        listeDesObjets.remove(listeDesObjets[dead])
         #**
 
-
-
     for i, position in toAdd:
-        listeDesDechets.append(dechet(1000, position))
-        listeDesObjets+=listeDesDechets
+        listeDesDechets.append(dechet(100, position))
+        listeDesObjets=listeDesDechets+listeDesViandes
     #**  
     listeDesObjets = []
     listeDesObjets=listeDesViandes+listeDesDechets

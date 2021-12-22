@@ -1,9 +1,9 @@
 from UI import *
 listeDesViandes=[]
 listeDesDechets=[]
-directions = [(-1,0),(0,1),(1,0),(0,-1),(1,1),(-1,1),(1,-1),(-1,-1)]
 
 class Objet:
-    def __init__(self,vie, position):
-        self.vie = vie
+    def __init__(self,energie, position):
+        self.energie = energie
         self.position = position
+        self.attaque=0
