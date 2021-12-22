@@ -21,7 +21,7 @@ listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 2
+FPS = 200
 
 #Frame Gif
 frames=0
@@ -46,6 +46,10 @@ while 1:
         if event.type== QUIT: #if pressing the X, quit the program
             pygame.quit() #stop pygame
             sys.exit() #stop the program
+        if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit() #stop the program
     screen.fill((0,0,0)) #clear the screen;
     
     """Je verrais pour les sprites cb d'images seront nécessaires"""
@@ -62,9 +66,9 @@ while 1:
         """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
         energieUpdate(listeDesPlantes[plante],plante)
         #listeDesPlantes[plante].inZoneRacine(listeDesDechets)
-        print("-----------------------------debut----------------------------")
-        listeDesPlantes[plante].inZoneSemis() #boucle infini :/
-        print("-----------------------------fin----------------------------")
+        listeDesPlantes[plante].inZoneSemis()
+        
+
         plante+=1
 
     for dead in reversed(toKill):
@@ -97,7 +101,7 @@ while 1:
         listeDesViandes.append(viande)
         listeDesObjets.append(viande)
 
-    
+
     #3eme objets
     toKill = []
     toAdd = []
@@ -125,14 +129,16 @@ while 1:
         listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
         
+
+    listeDesCarnivores += listeDesBebeCarnivores
+    listeDesHerbivores += listeDesBebeHerbivores
+    listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
+    listeDesPlantes += listeDesGraines
     
-    
-    print(listeDesPlantes)
-    print(listeDesGraines)
-    if len(listeDesGraines)!=0:
-        listeDesPlantes= listeDesPlantes + listeDesGraines
-        listeDesGraines = []
-    print("-------------", listeDesPlantes)
+    listeDesGraines.clear()
+    listeDesBebeCarnivores.clear()
+    listeDesBebeHerbivores.clear()
+
        
     #print(listeDesGraines)
     pygame.display.update() #update display

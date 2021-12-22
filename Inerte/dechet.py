@@ -14,8 +14,8 @@ class dechet(Objet):
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
         
-p=0
+p=10
 while p < 10:
-    enfant=dechet(1500, position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=dechet(15000, position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
     listeDesDechets.append(enfant)
     p+=1

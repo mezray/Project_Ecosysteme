@@ -13,17 +13,17 @@ class Plante(Vivant):
     
     def manger(self,dechet): 
         if self.energie > 0 and dechet.energie > 0:
-            self.energie += dechet.energie
-            dechet.energie = 0
+            self.energie += 20
+            dechet.energie -= 20
             return
        
                 
     def reproduire(self,x,y):
-        if len(listeDesPlantes)<6:
-            print("videeeeeeeeeeeeeeeeeee", listeDesGraines)
+        print(len(listeDesPlantes))
+        if len(listeDesPlantes)<50:
             enfant=self.__class__(300,300,100,100,position=[x,y])
             listeDesGraines.append(enfant)
-            print("liste initial :", listeDesGraines)
+            #print("liste initial :", listeDesGraines)
 
     def inZoneRacine(self,elem):
         i=0
@@ -39,9 +39,9 @@ class Plante(Vivant):
         x=self.position[0]+random.randrange(-self.rayonSemis,self.rayonSemis)
         y=self.position[1]+random.randrange(-self.rayonSemis,self.rayonSemis)
         #print('x: ', x, 'y: ', y)
-        if x<0 or x>800 or y<0 or y>600 :
-            print('1')
+        if x<10 or x>(SCREENWIDTH-50) or y<10 or y>(SCREENHEIGHT-50) :
             #return self.inZoneSemis()
+            pass
         else:
             return self.reproduire(x,y)
         

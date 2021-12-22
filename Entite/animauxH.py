@@ -18,8 +18,8 @@ class lapin(Herbivore):
         screen.blit(image, position)
 
 
-p=10
+p=0
 while p < 10:
-    enfant=lapin(150,300,random.choice(['male',"femelle"]),350,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=lapin(100,300,random.choice(['male',"femelle"]),100,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
     listeDesHerbivores.append(enfant)
     p+=1

@@ -32,10 +32,11 @@ class chat(Carnivore):
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
 
-p=2
+p=0
 while p < 2:
-    enfant1=loup(500,500,random.choice(['male',"femelle"]),750,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
-    enfant2=chat(300,300,random.choice(['male',"femelle"]),150,50,position=[random.randrange(0,750),random.randrange(0,550)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant1=loup(500,500,'male',150,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant2=loup(500,500,"femelle",800,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+    #enfant2=chat(300,300,random.choice(['male',"femelle"]),150,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
     
     listeDesCarnivores.append(enfant1)
     listeDesCarnivores.append(enfant2)

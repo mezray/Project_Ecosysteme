@@ -1,10 +1,15 @@
-import pygame
 from UI import *
 
-listeDesCarnivores=[]
+listeDesCarnivores = []
 listeDesHerbivores=[]
-listeDesGraines = []
 listeDesPlantes = []
+
+listeDesBebeCarnivores = []
+listeDesBebeHerbivores = []
+listeDesGraines = []
+
+
+
 
 
 class Vivant:
