@@ -21,7 +21,7 @@ listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 200
+FPS = 20
 
 #Frame Gif
 frames=0
@@ -65,7 +65,7 @@ while 1:
         listeDesPlantes[plante].draw(listeDesPlantes[plante].position, frames)
         """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
         energieUpdate(listeDesPlantes[plante],plante)
-        #listeDesPlantes[plante].inZoneRacine(listeDesDechets)
+        listeDesPlantes[plante].inZoneRacine(listeDesDechets)
         listeDesPlantes[plante].inZoneSemis()
         
 
@@ -129,7 +129,12 @@ while 1:
         listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
         
-
+    f=0
+    if f==3:
+        listeDesCarnivores.append(listeDesBebeCarnivores, listeDesBebeCarnivores.position)
+        f=0 
+    f+=1
+    
     listeDesCarnivores += listeDesBebeCarnivores
     listeDesHerbivores += listeDesBebeHerbivores
     listeDesAnimaux=listeDesCarnivores+listeDesHerbivores

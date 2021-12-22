@@ -10,7 +10,7 @@ class Carnivore(Vivant):
         self.rayonContact=rayonContact
 
     def manger(self,proie):#le prédateur récupère tout l'énergie de la proie, la proie perd sa vie et il est retirer de la listeDesCarnivores
-        if self.energie > 0:
+        if self.energie > 0 and self.energie <=100:
             if self.attaque >= proie.energie and proie.energie > 0: #Si attaque >> energie de la proie ET energie de la proie > 0
                 self.energie += proie.energie
                 proie.energie = 0 #on retire les dégats à l'energie de la cible --> a revoir pour cas attaque fait que pt energie << 0
@@ -22,27 +22,17 @@ class Carnivore(Vivant):
                 return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        if len(listeDesCarnivores)<50:
-            enfant=self.__class__(300,300,random.choice(['male',"femelle"]),750,100,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+        if len(listeDesCarnivores)<200 and self.force >= 1:
+            enfant=self.__class__(300,300,random.choice(['male',"femelle"]),750,100,self.position)#self.__class__ permet de récupérer la classe de 'self'
             listeDesBebeCarnivores.append(enfant)
+            self.force = 0
 
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
-        if len(listeDesCarnivores) < 7500:
-            #oui = random.randrange(0,2)
-            oui = 1
-        else:
-            oui = 0
-        if cible.name==self.name and oui == 1:#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
+        if cible.name==self.name:#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
             if self.sexe != cible.sexe:
                 return self.reproduire()
-        #print(cible.__class__.__bases__[0])
-        if str(cible.__class__.__bases__[0])=="<class 'carnivore.Carniveore'>" and oui == 0:#si un carnivore croise un carnivore, carnivore sera manger
-            return self.manger(cible)
-        if str(cible.__class__.__bases__[0])=="<class 'herbivore.Herbivore'>" and oui == 0:#si un carnivore croise un herbivore, herbivore sera manger
-            return self.manger(cible) 
-        if str(cible.__class__.__bases__[0])=="<class 'objet.Objet'>" and oui == 0: #si un carnivore croise un objet viande, viande sera manger
-            return self.manger(cible)
+        return self.manger(cible)
     
     def inRayonVision(self,cible):
         distance= (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
@@ -69,9 +59,11 @@ class Carnivore(Vivant):
         if newX<10 or newX>(SCREENWIDTH-50) or newY<10 or newY>(SCREENHEIGHT-50) :
             return self.deplacer(random.randrange(0,8))
         else:
-            self.position[0]=newX
-            self.position[1]=newY
-
+            smallOffset = random.random()
+            self.position[0]=newX + smallOffset
+            self.position[1]=newY + smallOffset
+            
+            
         liste=listeDesHerbivores+listeDesViandes+listeDesCarnivores
         random.shuffle(liste)
         i=0

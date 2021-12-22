@@ -19,11 +19,10 @@ class Plante(Vivant):
        
                 
     def reproduire(self,x,y):
-        print(len(listeDesPlantes))
-        if len(listeDesPlantes)<50:
-            enfant=self.__class__(300,300,100,100,position=[x,y])
+        if len(listeDesPlantes)<500 and self.force >= 1 and self.energie <= 10:
+            enfant=self.__class__(150,10,300,100,position=[x,y])
             listeDesGraines.append(enfant)
-            #print("liste initial :", listeDesGraines)
+            self.force -= 1
 
     def inZoneRacine(self,elem):
         i=0

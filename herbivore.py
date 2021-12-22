@@ -9,15 +9,16 @@ class Herbivore(Vivant):
         
     
     def manger(self,herbe):
-        if self.energie > 0 and herbe.energie > 0:
+        if self.energie > 0 and herbe.energie > 0 and self.energie <= 50:
             self.energie += herbe.energie
             herbe.energie = 0
             return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        if len(listeDesHerbivores)<50:
-            enfant=self.__class__(150,300,random.choice(['male',"femelle"]),100,100,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+        if len(listeDesHerbivores)<1000 and self.force >= 0:
+            enfant=self.__class__(150,300,random.choice(['male',"femelle"]),100,100,self.position)#self.__class__ permet de récupérer la classe de 'self'
             listeDesBebeHerbivores.append(enfant)
+            self.force -= 1
 
     def inRayonContact(self,cible):#si une cible est dans le rayon de contact
         if cible.name==self.name :#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
@@ -28,7 +29,7 @@ class Herbivore(Vivant):
     
     def inRayonVision(self,cible):
         distance= (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
-        direct=directions[0]
+        direct=(0,0)
         for direction in directions:
             newX=self.position[0]+direction[0]*self.vitesse
             newY=self.position[1]+direction[1]*self.vitesse
@@ -51,11 +52,13 @@ class Herbivore(Vivant):
         if newX<10 or newX>(SCREENWIDTH-50) or newY<10 or newY>(SCREENHEIGHT-50) :
             return self.deplacer(random.randrange(0,8))
         else:
-            self.position[0]=newX
-            self.position[1]=newY
+            smallOffset = random.random()
+            self.position[0]=newX + smallOffset
+            self.position[1]=newY + smallOffset
             #print(newX, newY)
         
         liste=listeDesPlantes+listeDesCarnivores+listeDesHerbivores
+        random.shuffle(liste)
         i=0
         while i<len(liste):
             if self.inZone(self.rayonContact,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
