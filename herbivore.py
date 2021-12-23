@@ -15,7 +15,7 @@ class Herbivore(Vivant):
             return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
-        if len(listeDesHerbivores)<1000 and len(listeDesBebeHerbivores)<100 and self.force >= 1 and self.sexe == "femelle":
+        if len(listeDesHerbivores)<50 and len(listeDesBebeHerbivores)<10 and self.force >= 1 and self.sexe == "femelle":
             listeDesBebeHerbivores.append(self)
             self.force -= 1
 
@@ -53,8 +53,8 @@ class Herbivore(Vivant):
         else:
             self.position[0]=newX 
             self.position[1]=newY 
-            #print(newX, newY)
-        
+            
+        self.digerer()
         liste=listeDesPlantes+listeDesCarnivores+listeDesHerbivores
         random.shuffle(liste)
         i=0
@@ -66,5 +66,4 @@ class Herbivore(Vivant):
             i+=1
         
         return self.position
-    
     

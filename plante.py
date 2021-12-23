@@ -19,7 +19,7 @@ class Plante(Vivant):
        
                 
     def reproduire(self,x,y):
-        if len(listeDesPlantes)<500 and self.force >= 1 and self.energie <= 10:
+        if len(listeDesPlantes)<50 and self.force >= 1 and self.energie <= 10:
             enfant=self.__class__(150,10,300,100,position=[x,y])
             listeDesGraines.append(enfant)
             self.force -= 1
@@ -39,8 +39,7 @@ class Plante(Vivant):
         y=self.position[1]+random.randrange(-self.rayonSemis,self.rayonSemis)
         #print('x: ', x, 'y: ', y)
         if x<10 or x>(SCREENWIDTH-50) or y<10 or y>(SCREENHEIGHT-50) :
-            #return self.inZoneSemis()
-            pass
+            return self.inZoneSemis()
         else:
             return self.reproduire(x,y)
         

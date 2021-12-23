@@ -13,10 +13,6 @@ from Inerte.dechet import *
 
 from plante import *
 
-listeDesObjets=listeDesDechets+listeDesViandes
-listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
-
-
 
 pygame.init()
 
@@ -25,22 +21,6 @@ FPS = 0
 
 #Frame Gif
 frames=0
-f=0
-j=0
-
-def energieUpdate(etreVivant,index):
-    if etreVivant.energie>=1:
-        etreVivant.energie -=1
-    else:
-        if etreVivant.vie>=20:
-            etreVivant.energie+=20
-            etreVivant.vie-=20
-        else:
-            etreVivant.vie=0
-            
-    if etreVivant.vie<=0:
-        toKill.append(index)
-        toAdd.append([index, etreVivant.position])
 
 #Initialisation
 while 1:
@@ -66,17 +46,18 @@ while 1:
     while plante<len(listeDesPlantes):
         listeDesPlantes[plante].draw(listeDesPlantes[plante].position, frames)
         """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
-        energieUpdate(listeDesPlantes[plante],plante)
+        listeDesPlantes[plante].energieUpdate(plante)
+        if listeDesPlantes[plante].vie<=0:
+            toKill.append(plante)
+            toAdd.append([plante, listeDesPlantes[plante].position])
         listeDesPlantes[plante].inZoneRacine(listeDesDechets)
         listeDesPlantes[plante].inZoneSemis()
-        
-
         plante+=1
 
     for dead in reversed(toKill):
         listeDesPlantes.remove(listeDesPlantes[dead])
         
-    for i, position in toAdd:#sert à quoi 'i'?
+    for i, position in toAdd:
         listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
 
@@ -88,7 +69,10 @@ while 1:
     while i<len(listeDesAnimaux): #update all animals
         newPosition=listeDesAnimaux[i].deplacer(random.randrange(0,8))
         listeDesAnimaux[i].draw(newPosition, frames)
-        energieUpdate(listeDesAnimaux[i],i)
+        listeDesAnimaux[i].energieUpdate(plante)
+        if listeDesAnimaux[i].vie<=0:
+            toKill.append(i)
+            toAdd.append([i, listeDesAnimaux[i].position])
         i+=1
 
     for dead in reversed(toKill):
@@ -131,49 +115,16 @@ while 1:
         listeDesDechets.append(dechet(300, position))
         listeDesObjets=listeDesDechets+listeDesViandes
     
-    if f==3:
-        i=0
-        while i<len(listeDesBebeHerbivores):
-            if listeDesBebeHerbivores[i].enceinte == 0:
-                try:
-                    position=[0,0]
-                    position[0] = listeDesBebeHerbivores[i].position[0]
-                    position[1] = listeDesBebeHerbivores[i].position[1]
-                    listeDesHerbivores.append(listeDesBebeHerbivores[i].__class__(100,300,random.choice(['male',"femelle"]),400,150,position))
-                    listeDesBebeHerbivores.remove(listeDesBebeHerbivores[i])
-                except:
-                    listeDesBebeHerbivores.remove(listeDesBebeHerbivores[i])
-            else:
-                listeDesBebeHerbivores[i].enceinte -= 1
-            i+=1
-    else:
-        f+=1
+    #période d'accouchement
+    for bebeHerbivore in listeDesBebeHerbivores:
+        bebeHerbivore.accouchement(listeDesHerbivores,listeDesBebeHerbivores,bebeHerbivore,100,300,400,150)
+    for bebeCarnivore in listeDesBebeCarnivores:
+        bebeCarnivore.accouchement(listeDesCarnivores,listeDesBebeCarnivores,bebeCarnivore,150,500,300,150)
 
-    if j==3:
-        i=0
-        while i<len(listeDesBebeCarnivores):
-            if listeDesBebeCarnivores[i].enceinte == 0:
-                try:
-                    position=[0,0]
-                    position[0] = listeDesBebeCarnivores[i].position[0]
-                    position[1] = listeDesBebeCarnivores[i].position[1]
-                    listeDesCarnivores.append(listeDesBebeCarnivores[i].__class__(150,500,random.choice(['male',"femelle"]),300,150,position))
-                    listeDesBebeCarnivores.remove(listeDesBebeCarnivores[i])
-                except:
-                    listeDesBebeCarnivores.remove(listeDesBebeCarnivores[i])
-            else:
-                listeDesBebeCarnivores[i].enceinte -= 1
-            i+=1
-    else:
-        j+=1
-    
 
     listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
     listeDesPlantes += listeDesGraines
-    
     listeDesGraines.clear()
-
-
        
     #print(listeDesGraines)
     pygame.display.update() #update display

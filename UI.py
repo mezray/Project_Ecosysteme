@@ -4,8 +4,8 @@ from win32api import GetSystemMetrics
 
 #définir taille écran:
 
-SCREENWIDTH=1920  
-SCREENHEIGHT=1080
+SCREENWIDTH=1500  
+SCREENHEIGHT=800
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
 

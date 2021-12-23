@@ -6,9 +6,10 @@ class lapin(Herbivore):
         Herbivore.__init__(self,rayonVision,rayonContact)
         Vivant.__init__(self,energie,vie,sexe)
         self.name= "lapin"
-        self.enceinte = 20
+        self.enceinte = 10
+        self.digestion=10
         self.force = 1
-        self.vitesse = 7 #vitesse en fonction de l'énergie
+        self.vitesse = 7 
         self.position = position
         self.attaque = self.energie
     
@@ -20,7 +21,7 @@ class lapin(Herbivore):
 
 
 p=0
-while p < 50:
+while p < 10:
     enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)
     enfant2=lapin(100,300,"femelle",400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     listeDesHerbivores.append(enfant1)

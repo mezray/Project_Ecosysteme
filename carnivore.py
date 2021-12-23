@@ -14,13 +14,10 @@ class Carnivore(Vivant):
             if self.attaque >= proie.energie and proie.energie > 0: #Si attaque >> energie de la proie ET energie de la proie > 0
                 self.energie += proie.energie
                 proie.energie = 0 #on retire les dégats à l'energie de la cible --> a revoir pour cas attaque fait que pt energie << 0
-                #print("statu attaquant",self.name, self.energie, "et proie", proie.name, proie.energie)
-                self.caca +=1
                 return
             if self.attaque < proie.energie:
                 proie.energie -= self.attaque
                 self.energie += self.attaque
-                self.caca +=1
                 return
                 
     def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
@@ -63,12 +60,11 @@ class Carnivore(Vivant):
             self.position[0]=newX 
             self.position[1]=newY 
             
-            
+        self.digerer()
         liste=listeDesHerbivores+listeDesViandes+listeDesCarnivores
-        #random.shuffle(liste)
+        random.shuffle(liste)
         i=0
-        if self.caca >=20:
-            return 
+            
         while i<len(liste):
             if self.inZone(self.rayonContact,liste[i].position)==True:#regarde s'il y a qqch dans le rayon de contact
                 self.inRayonContact(liste[i])
