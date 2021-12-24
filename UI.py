@@ -3,7 +3,6 @@ from win32api import GetSystemMetrics
 
 
 #définir taille écran:
-
 SCREENWIDTH=1500  
 SCREENHEIGHT=800
 size = (SCREENWIDTH, SCREENHEIGHT)

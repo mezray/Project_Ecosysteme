@@ -13,14 +13,14 @@ class Carnivore(Vivant):
         if self.energie > 0 and self.energie <=100:
             if self.attaque >= proie.energie and proie.energie > 0: #Si attaque >> energie de la proie ET energie de la proie > 0
                 self.energie += proie.energie
-                proie.energie = 0 #on retire les dégats à l'energie de la cible --> a revoir pour cas attaque fait que pt energie << 0
+                proie.energie = 0 
                 return
             if self.attaque < proie.energie:
                 proie.energie -= self.attaque
                 self.energie += self.attaque
                 return
                 
-    def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
+    def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesBebeCarnivores
         if len(listeDesCarnivores)<200 and len(listeDesBebeCarnivores)<75 and self.force >= 1 and self.sexe == "femelle":
             listeDesBebeCarnivores.append(self)
             self.force -= 1

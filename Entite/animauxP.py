@@ -10,7 +10,7 @@ class rose(Plante):
         self.force = 5
         self.position=position
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/banana/frame-'+str(i+1)+'.gif'
         image = pygame.image.load(gifNumber)

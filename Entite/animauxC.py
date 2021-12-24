@@ -9,11 +9,11 @@ class loup(Carnivore):
         self.enceinte = 100
         self.digestion=500
         self.force = 1
-        self.vitesse = 7 #vitesse en fonction de l'énergie
+        self.vitesse = 7
         self.position = position
         self.attaque = self.energie
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/pug/frame-'+str(i%4+1)+'.gif'
         image = pygame.image.load(gifNumber)

@@ -14,7 +14,7 @@ class Herbivore(Vivant):
             herbe.energie = 0
             return
                 
-    def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesCarnivores
+    def reproduire(self):#créer un enfant à partir de la classe de ses parents et ajouter à la listeDesBebeHerbivores
         if len(listeDesHerbivores)<50 and len(listeDesBebeHerbivores)<10 and self.force >= 1 and self.sexe == "femelle":
             listeDesBebeHerbivores.append(self)
             self.force -= 1
@@ -23,7 +23,7 @@ class Herbivore(Vivant):
         if cible.name==self.name :#s'ils sont de même espèce animal mais de sexe différent, ils vont reproduire
             if self.sexe != cible.sexe:
                 return self.reproduire()
-        if str(cible.__class__.__bases__[0])=="<class 'plante.Plante'>" :#si un carnivore croise un herbivore, herbivore sera manger
+        if str(cible.__class__.__bases__[0])=="<class 'plante.Plante'>" :
             return self.manger(cible)
     
     def inRayonVision(self,cible):

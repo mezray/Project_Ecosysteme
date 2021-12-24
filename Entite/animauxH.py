@@ -13,11 +13,15 @@ class lapin(Herbivore):
         self.position = position
         self.attaque = self.energie
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/Lapin/frame-'+str(i%3+1)+'.gif'
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
+
+
+
+
 
 
 p=0
