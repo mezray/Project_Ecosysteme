@@ -13,4 +13,3 @@ class beef(Objet):
         gifNumber='./sprite/steak/steak.png'
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
-    

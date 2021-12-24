@@ -26,7 +26,7 @@ class lapin(Herbivore):
 
 p=0
 while p < 10:
-    enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)
+    enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     enfant2=lapin(100,300,"femelle",400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     listeDesHerbivores.append(enfant1)
     listeDesHerbivores.append(enfant2)

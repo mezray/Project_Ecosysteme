@@ -39,9 +39,9 @@ class chat(Carnivore):
 
 p=0
 while p < 2:
-    enfant1=loup(150,500,'male',300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
-    enfant2=loup(150,500,"femelle",300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
-    #enfant2=chat(300,300,random.choice(['male',"femelle"]),150,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant1=loup(150,500,'male',300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
+    enfant2=loup(150,500,"femelle",300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
+    #enfant2=chat(300,300,random.choice(['male',"femelle"]),150,50,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     
     listeDesCarnivores.append(enfant1)
     listeDesCarnivores.append(enfant2)
