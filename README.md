@@ -3,4 +3,5 @@ The Open–closed principle (OCP)
 
     “Software entities … should be open for extension but closed for modification”
 
-On peut prendre comme exemple différentes classes tels que les classes présentes dans Entite ou Inerte ou 'lon peut ajouter sans complication de nouveaux animaux/plantes/viandes/déchets. Ou dans les classes herbivore/carnivore/plante/objet ou l'on peut ajouter de nouveaux modules sans pour autant modifier le code déja fait 
+We can take as example different classes such as the classes present in "Entite" or "Inert" where we can add without complication new "animals/ plants/ meat/ waste". Or in the "herbivore/ carnivore/ plante/ objet/" classes where we can add new modules without modifying the code already done
+
