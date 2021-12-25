@@ -42,7 +42,7 @@ class Cat(Carnivorous):
         screen.blit(image, position)
 
 p=0
-while p < 2:
+while p < 1:
     wolf1=Wolf('male',300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     wolf2=Wolf("female",300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     

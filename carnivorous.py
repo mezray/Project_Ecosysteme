@@ -24,24 +24,24 @@ class Carnivorous(Living):
             listeDesBebeCarnivores.append(self)
             self.strength-=1
 
-    def inRadiusContact(self,cible):
-        if cible.name == self.name:
-            if self.sex != cible.sex:
+    def inRadiusContact(self,target):
+        if target.name == self.name:
+            if self.sex != target.sex:
                 return self.reproduce()
-        return self.eat(cible)
+        return self.eat(target)
     
-    def inRadiusVision(self,cible):
-        distance = (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
+    def inRadiusVision(self,target):
+        distance = (self.position[0]-target.position[0])**2+(self.position[1]-target.position[1])**2
         direct = (0,0)
         for direction in directions:
             newX = self.position[0]+direction[0]*self.speed
             newY = self.position[1]+direction[1]*self.speed
             if (10<newX<(SCREENWIDTH-50)) and (10<newY<(SCREENHEIGHT-50)):
-                near = (newX-cible.position[0])**2 + (newY-cible.position[1])**2 
-                if self.attack >=cible.attack and near <= distance: 
+                near = (newX-target.position[0])**2 + (newY-target.position[1])**2 
+                if self.attack >=target.attack and near <= distance: 
                     direct = direction
                     distance = near
-                if self.attack <=cible.attack and near >= distance:
+                if self.attack <=target.attack and near >= distance:
                     direct = direction
                     distance = near
         self.position[0]+=direct[0]*self.speed

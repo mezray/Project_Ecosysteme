@@ -15,7 +15,7 @@ class Banana(Plant):
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
 
-p=0
+p=100
 while p < 50:
     banana1=Banana(150,10,300,100,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     listeDesPlantes.append(banana1)

@@ -1,9 +1,9 @@
 import pygame
 from object import *
 
-class Beef(Objet):
+class Beef(Object):
     def __init__(self,energy,position):
-        Objet.__init__(self,energy, position)
+        Object.__init__(self,energy, position)
         self.name = "meat"
         self.position = position
         self.attack = 0
