@@ -8,9 +8,8 @@ class beef(Objet):
         self.position=position
         self.attaque=0
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/steak/steak.png'
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
-    

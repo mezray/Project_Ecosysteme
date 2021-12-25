@@ -8,7 +8,7 @@ class dechet(Objet):
         self.position=position
         
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/Cacs/frame-'+str(i%5+1)+'.gif'
         image = pygame.image.load(gifNumber)

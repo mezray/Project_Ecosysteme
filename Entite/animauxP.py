@@ -10,7 +10,7 @@ class rose(Plante):
         self.force = 5
         self.position=position
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/banana/frame-'+str(i+1)+'.gif'
         image = pygame.image.load(gifNumber)
@@ -18,6 +18,6 @@ class rose(Plante):
 
 p=0
 while p < 50:
-    enfant=rose(150,10,300,100,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#self.__class__ permet de récupérer la classe de 'self'
+    enfant=rose(150,10,300,100,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     listeDesPlantes.append(enfant)
     p+=1 

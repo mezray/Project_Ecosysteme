@@ -17,11 +17,14 @@ from plante import *
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 0
+FPS = 1
 
 #Frame Gif
 frames=0
 
+#Terrain
+image = pygame.image.load("background/grass.png")
+        
 #Initialisation
 while 1:
     for event in pygame.event.get():
@@ -32,7 +35,8 @@ while 1:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
                     sys.exit() #stop the program
-    screen.fill((0,0,0)) #clear the screen;
+    screen.blit(image, (0,0))
+ #clear the screen;
     
     """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1

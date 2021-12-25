@@ -13,16 +13,20 @@ class lapin(Herbivore):
         self.position = position
         self.attaque = self.energie
     
-    #sprite du bled
+    #sprite
     def draw(self, position, i):
         gifNumber='./sprite/Lapin/frame-'+str(i%3+1)+'.gif'
         image = pygame.image.load(gifNumber)
         screen.blit(image, position)
 
 
+
+
+
+
 p=0
 while p < 10:
-    enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])#random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)
+    enfant1=lapin(100,300,'male',400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     enfant2=lapin(100,300,"femelle",400,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     listeDesHerbivores.append(enfant1)
     listeDesHerbivores.append(enfant2)

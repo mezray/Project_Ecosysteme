@@ -7,7 +7,7 @@ import random
 
 class Plante(Vivant):
     def __init__(self,rayonRacine,rayonSemis):
-        self.rayonSemis=rayonSemis# une plante quoi
+        self.rayonSemis=rayonSemis
         self.rayonRacine=rayonRacine
         
     
@@ -34,10 +34,8 @@ class Plante(Vivant):
             i+=1
     
     def inZoneSemis(self):
-        # a completer possiblement supprimer et fusionner avec celui de dessus ==> ! main prblm
         x=self.position[0]+random.randrange(-self.rayonSemis,self.rayonSemis)
         y=self.position[1]+random.randrange(-self.rayonSemis,self.rayonSemis)
-        #print('x: ', x, 'y: ', y)
         if x<10 or x>(SCREENWIDTH-50) or y<10 or y>(SCREENHEIGHT-50) :
             return self.inZoneSemis()
         else:

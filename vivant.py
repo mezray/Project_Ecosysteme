@@ -20,7 +20,7 @@ class Vivant:
         self.vie=vie
         self.sexe=sexe
 
-    def reproduire(self):#tout les être vivants savent reproduire
+    def reproduire(self):#tout les être vivants savent se reproduire
         pass
 
     def inZone(self,rayon,objectPosition):#check si la distance entre 2 objets est inférieur à une rayon donné 
