@@ -1,4 +1,4 @@
-from Inerte.waste import waste
+from Inerte.waste import Waste
 from UI import *
 import random
 from object import *
@@ -44,13 +44,13 @@ class Living:
             else:
                 self.health = 0
     
-    def childBirth(self,addListe,bebeListe,animal,energy,health,radiusView,radiusContact):
+    def childBirth(self,addListe,bebeListe,animal):
         if animal.pregnant == 0:
             try:
                 position=[0,0]
                 position[0] = animal.position[0]
                 position[1] = animal.position[1]
-                addListe.append(animal.__class__(energy,health,random.choice(['male',"female"]),radiusView,radiusContact,position))
+                addListe.append(animal.__class__(random.choice(['male',"female"]),animal.radiusView,animal.radiusContact,position, energy=self.energyMAX,health=self.healthMAX))
                 bebeListe.remove(animal)
             except:
                 bebeListe.remove(animal)
@@ -62,10 +62,10 @@ class Living:
             position = [0,0]
             position[0] = self.position[0]
             position[1] = self.position[1]
-            excrement = waste(300,position)
+            excrement = Waste(300,position)
             listeDesDechets.append(excrement)
             listeDesObjets.append(excrement)
-            self.digestion = 50
+            self.digestion = random.randrange(50,70)
         else:
             self.digestion-=1
 

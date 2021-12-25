@@ -2,10 +2,12 @@ import pygame
 from carnivorous import *
 
 class Wolf(Carnivorous):
-    def __init__(self,energy,health,sex,radiusView,radiusContact,position):
+    def __init__(self,sex,radiusView,radiusContact,position,energy = 150,health = 300):
         Carnivorous.__init__(self,radiusView,radiusContact)
         Living.__init__(self,energy,health,sex)
         self.name = "wolf"
+        self.energyMax = 150
+        self.healthMax = 300
         self.pregnant = 100
         self.digestion = 500
         self.strength = 1
@@ -21,10 +23,12 @@ class Wolf(Carnivorous):
 
 
 class Cat(Carnivorous):
-    def __init__(self,energy,health,sex,radiusView,radiusContact,position):
+    def __init__(self,sex,radiusView,radiusContact,position,energy = 50,health = 200):
         Carnivorous.__init__(self,radiusView,radiusContact)
         Living.__init__(self,energy,health,sex)
         self.name = "cat"
+        self.energyMax = 50
+        self.healthMax = 200
         self.pregnant = 50
         self.digestion = 300
         self.speed = 7
@@ -39,8 +43,8 @@ class Cat(Carnivorous):
 
 p=0
 while p < 2:
-    wolf1=Wolf(150,500,'male',300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
-    wolf2=Wolf(150,500,"female",300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
+    wolf1=Wolf('male',300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
+    wolf2=Wolf("female",300,150,position=[random.randrange(100,SCREENWIDTH-100),random.randrange(100,SCREENHEIGHT-100)])
     
     listeDesCarnivores.append(wolf1)
     listeDesCarnivores.append(wolf2)

@@ -1,7 +1,7 @@
 import pygame
 from object import *
 
-class waste(Objet):
+class Waste(Objet):
     def __init__(self,energy,position):
         Objet.__init__(self, energy, position)
         self.name = "waste"

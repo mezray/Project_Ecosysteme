@@ -54,12 +54,10 @@ while 1:
         listeDesPlantes[plante].inZoneRacine(listeDesDechets)
         listeDesPlantes[plante].inZoneSemis()
         plante+=1
-
     for dead in reversed(toKill):
-        listeDesPlantes.remove(listeDesPlantes[dead])
-        
+        listeDesPlantes.remove(listeDesPlantes[dead]) 
     for i, position in toAdd:
-        listeDesDechets.append(waste(300, position))
+        listeDesDechets.append(Waste(300, position))
         listeDesObjets = listeDesDechets + listeDesViandes
 
       
@@ -84,7 +82,7 @@ while 1:
         listeDesAnimaux.remove(listeDesAnimaux[dead])
 
     for i, position in toAdd:
-        viande = beef(300, position)
+        viande = Beef(300, position)
         listeDesViandes.append(viande)
         listeDesObjets.append(viande)
 
@@ -100,7 +98,7 @@ while 1:
             
         else:
             toKill.append(objet)
-            if (isinstance(listeDesObjets[objet], waste)) == False:
+            if (isinstance(listeDesObjets[objet], Waste)) == False:
                 toAdd.append([objet, listeDesObjets[objet].position])
         objet+=1
         
@@ -113,20 +111,19 @@ while 1:
         
 
     for i, position in toAdd:
-        listeDesDechets.append(waste(300, position))
+        listeDesDechets.append(Waste(300, position))
         listeDesObjets = listeDesDechets + listeDesViandes
     
     #childBirth
     for bebeHerbivore in listeDesBebeHerbivores:
-        bebeHerbivore.childBirth(listeDesHerbivores,listeDesBebeHerbivores,bebeHerbivore,100,300,400,150)
+        bebeHerbivore.childBirth(listeDesHerbivores,listeDesBebeHerbivores,bebeHerbivore)
     for bebeCarnivore in listeDesBebeCarnivores:
-        bebeCarnivore.childBirth(listeDesCarnivores,listeDesBebeCarnivores,bebeCarnivore,150,500,300,150)
+        bebeCarnivore.childBirth(listeDesCarnivores,listeDesBebeCarnivores,bebeCarnivore)
 
 
     listeDesAnimaux = listeDesCarnivores + listeDesHerbivores
     listeDesPlantes+=listeDesGraines
     listeDesGraines.clear()
-       
-    #print(listeDesGraines)
+
     pygame.display.update() #update display
     pygame.time.Clock().tick(FPS) #limit FPS

@@ -1,10 +1,6 @@
 from object import *
 from living import *
 import random
-
-
-
-
 class Plant(Living):
     def __init__(self,radiusRacine,radiusSemis):
         self.radiusSemis=radiusSemis
@@ -28,7 +24,7 @@ class Plant(Living):
         while i<len(elem):
             element = elem[i]
             if self.inZone(self.radiusRacine,element.position)==True:
-                if type(element).__name__ == 'waste':
+                if type(element).__name__ == 'Waste':
                     return self.eat(element)
             i+=1
     

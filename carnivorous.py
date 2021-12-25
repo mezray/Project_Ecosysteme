@@ -19,7 +19,7 @@ class Carnivorous(Living):
                 self.energy += self.attack
                 return
                 
-    def reproduire(self):
+    def reproduce(self):
         if len(listeDesCarnivores) < 200 and len(listeDesBebeCarnivores) < 75 and self.strength >= 1 and self.sex == "female":
             listeDesBebeCarnivores.append(self)
             self.strength-=1
@@ -30,7 +30,7 @@ class Carnivorous(Living):
                 return self.reproduce()
         return self.eat(cible)
     
-    def inRayonVision(self,cible):
+    def inRadiusVision(self,cible):
         distance = (self.position[0]-cible.position[0])**2+(self.position[1]-cible.position[1])**2
         direct = (0,0)
         for direction in directions:
@@ -66,7 +66,7 @@ class Carnivorous(Living):
             if self.inZone(self.radiusContact,liste[i].position) == True:
                 self.inRadiusContact(liste[i])
             if self.inZone(self.radiusView,liste[i].position) == True:
-                return self.inRayonVision(liste[i])
+                return self.inRadiusVision(liste[i])
             i+=1
         return self.position
     
