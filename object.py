@@ -3,7 +3,7 @@ listeDesViandes=[]
 listeDesDechets=[]
 
 class Objet:
-    def __init__(self,energie, position):
-        self.energie = energie
+    def __init__(self,energy, position):
+        self.energy = energy
         self.position = position
-        self.attaque=0
+        self.attack = 0

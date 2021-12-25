@@ -2,25 +2,25 @@ import pygame, sys,random
 from pygame.locals import *
 from UI import *
 
-from vivant import *
-from Entite.animauxC import *
-from Entite.animauxH import *
-from Entite.animauxP import *
+from living import *
+from Entite.animalsC import *
+from Entite.animalsH import *
+from Entite.animalsP import *
 
-from objet import *
-from Inerte.viande import *
-from Inerte.dechet import *
+from object import *
+from Inerte.meat import *
+from Inerte.waste import *
 
-from plante import *
+from plant import *
 
 
 pygame.init()
 
 #vitesse du jeu en fps
-FPS = 1
+FPS = 0
 
 #Frame Gif
-frames=0
+frames = 0
 
 #Terrain
 image = pygame.image.load("background/grass.png")
@@ -36,22 +36,19 @@ while 1:
                     pygame.quit()
                     sys.exit() #stop the program
     screen.blit(image, (0,0))
- #clear the screen;
     
-    """Je verrais pour les sprites cb d'images seront nécessaires"""
     frames+=1
-    if frames>6:
-        frames=0
+    if frames > 6:
+        frames = 0
         
     # 1er = plantes
     toKill = []
     toAdd = []
-    plante=0
+    plante = 0
     while plante<len(listeDesPlantes):
         listeDesPlantes[plante].draw(listeDesPlantes[plante].position, frames)
-        """ CHANGEMENT VALEUR A LA FIN DU PROJET"""
-        listeDesPlantes[plante].energieUpdate(plante)
-        if listeDesPlantes[plante].vie<=0:
+        listeDesPlantes[plante].energyUpdate(plante)
+        if listeDesPlantes[plante].health <= 0:
             toKill.append(plante)
             toAdd.append([plante, listeDesPlantes[plante].position])
         listeDesPlantes[plante].inZoneRacine(listeDesDechets)
@@ -62,8 +59,8 @@ while 1:
         listeDesPlantes.remove(listeDesPlantes[dead])
         
     for i, position in toAdd:
-        listeDesDechets.append(dechet(300, position))
-        listeDesObjets=listeDesDechets+listeDesViandes
+        listeDesDechets.append(waste(300, position))
+        listeDesObjets = listeDesDechets + listeDesViandes
 
       
     #2eme animaux
@@ -71,10 +68,10 @@ while 1:
     toAdd = []
     i=0
     while i<len(listeDesAnimaux): #update all animals
-        newPosition=listeDesAnimaux[i].deplacer(random.randrange(0,8))
+        newPosition=listeDesAnimaux[i].move(random.randrange(0,8))
         listeDesAnimaux[i].draw(newPosition, frames)
-        listeDesAnimaux[i].energieUpdate(plante)
-        if listeDesAnimaux[i].vie<=0:
+        listeDesAnimaux[i].energyUpdate(plante)
+        if listeDesAnimaux[i].health <= 0:
             toKill.append(i)
             toAdd.append([i, listeDesAnimaux[i].position])
         i+=1
@@ -87,7 +84,7 @@ while 1:
         listeDesAnimaux.remove(listeDesAnimaux[dead])
 
     for i, position in toAdd:
-        viande=beef(300, position)
+        viande = beef(300, position)
         listeDesViandes.append(viande)
         listeDesObjets.append(viande)
 
@@ -98,12 +95,12 @@ while 1:
     objet = 0
     while objet<len(listeDesObjets): #update all objects
         listeDesObjets[objet].draw(listeDesObjets[objet].position, frames)
-        if listeDesObjets[objet].energie>=1:
-            listeDesObjets[objet].energie -=1  
+        if listeDesObjets[objet].energy >= 1:
+            listeDesObjets[objet].energy-=1  
             
         else:
             toKill.append(objet)
-            if (isinstance(listeDesObjets[objet], dechet)) == False:
+            if (isinstance(listeDesObjets[objet], waste)) == False:
                 toAdd.append([objet, listeDesObjets[objet].position])
         objet+=1
         
@@ -116,18 +113,18 @@ while 1:
         
 
     for i, position in toAdd:
-        listeDesDechets.append(dechet(300, position))
-        listeDesObjets=listeDesDechets+listeDesViandes
+        listeDesDechets.append(waste(300, position))
+        listeDesObjets = listeDesDechets + listeDesViandes
     
-    #période d'accouchement
+    #childBirth
     for bebeHerbivore in listeDesBebeHerbivores:
-        bebeHerbivore.accouchement(listeDesHerbivores,listeDesBebeHerbivores,bebeHerbivore,100,300,400,150)
+        bebeHerbivore.childBirth(listeDesHerbivores,listeDesBebeHerbivores,bebeHerbivore,100,300,400,150)
     for bebeCarnivore in listeDesBebeCarnivores:
-        bebeCarnivore.accouchement(listeDesCarnivores,listeDesBebeCarnivores,bebeCarnivore,150,500,300,150)
+        bebeCarnivore.childBirth(listeDesCarnivores,listeDesBebeCarnivores,bebeCarnivore,150,500,300,150)
 
 
-    listeDesAnimaux=listeDesCarnivores+listeDesHerbivores
-    listeDesPlantes += listeDesGraines
+    listeDesAnimaux = listeDesCarnivores + listeDesHerbivores
+    listeDesPlantes+=listeDesGraines
     listeDesGraines.clear()
        
     #print(listeDesGraines)
