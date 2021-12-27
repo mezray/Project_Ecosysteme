@@ -10,7 +10,6 @@
 <h2>Simulation :</h2>
 <h3>Package needed :</h3>
 
-- pypiwin32
 - pygame
 
 <h3>1. How to use :</h3>
