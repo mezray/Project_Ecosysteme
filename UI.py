@@ -1,7 +1,7 @@
 import pygame
 
 
-    #définir taille écran:
+#Resolution screen
 SCREENWIDTH=1500  
 SCREENHEIGHT=800
 size = (SCREENWIDTH, SCREENHEIGHT)
