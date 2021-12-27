@@ -68,7 +68,7 @@ class Main:
         while i<len(listeDesAnimaux): #update all animals
             newPosition=listeDesAnimaux[i].move(random.randrange(0,8))
             listeDesAnimaux[i].draw(newPosition, frames)
-            listeDesAnimaux[i].energyUpdate(plante)
+            listeDesAnimaux[i].energyUpdate(i)
             if listeDesAnimaux[i].health <= 0:
                 toKill.append(i)
                 toAdd.append([i, listeDesAnimaux[i].position])

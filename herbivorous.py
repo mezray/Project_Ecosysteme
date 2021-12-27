@@ -25,7 +25,7 @@ class Herbivorous(Living):
         if str(target.__class__.__bases__[0]) == "<class 'plant.Plant'>" :
             return self.eat(target)
     
-    def inRadiusVision(self,target):
+    def inRadiusView(self,target):
         distance = (self.position[0]-target.position[0])**2+(self.position[1]-target.position[1])**2
         direct = (0,0)
         for direction in directions:
@@ -64,7 +64,7 @@ class Herbivorous(Living):
             if self.inZone(self.radiusContact,liste[i].position) == True:
                 self.inRadiusContact(liste[i])
             if self.inZone(self.radiusView,liste[i].position) == True:
-                return self.inRadiusVision(liste[i])
+                return self.inRadiusView(liste[i])
             i+=1
         return self.position
     
